@@ -1,7 +1,13 @@
-export function Charakter() {
+export function Charakter({name, desc, img}) {
     return (
         <div>
-            Charakter component 
+            <div>
+                <h3>{name}</h3>
+                <div>{desc}</div>
+                <div>
+                    <img src={img} alt="logo"/>
+                </div>
+            </div>
         </div>
-    )
+)
 }
