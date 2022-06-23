@@ -1,8 +1,9 @@
+import {Posts} from "./components";
 
 function App() {
   return (
     <div>
-      Hello World!
+      <Posts/>
     </div>
   );
 }
