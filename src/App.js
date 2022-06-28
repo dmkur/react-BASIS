@@ -1,8 +1,9 @@
+import Users from "./components/users/Users";
 
 function App() {
   return (
     <div>
-      Hello World!
+      <Users/>
     </div>
   );
 }
