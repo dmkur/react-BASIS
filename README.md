@@ -1,3 +1,8 @@
+# Lesson 3
+#### 1. Services
+1. Axios
+2. StateLifting vs Fetch
+
 # Lesson 2
 #### 1. Hooks:
 1. useEffect
