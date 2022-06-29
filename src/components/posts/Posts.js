@@ -2,7 +2,7 @@ import {useEffect, useState} from "react";
 import {getPosts, getPost} from "../../services";
 import Post from "../post/Post";
 
-export default function Posts() {
+export default function Posts({getPostId}) {
     const [posts, setPosts] = useState([]);
 
     useEffect(() => {
@@ -12,7 +12,7 @@ export default function Posts() {
     return (
         <div>
             {
-                posts.map(value => <Post item={value} key={value.id}/>)
+                posts.map(value => <Post item={value} key={value.id} getPostId={getPostId}/>)
             }
         </div>
     )
