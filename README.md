@@ -1,3 +1,20 @@
+# Lesson 4
+#### 1. Hook
+1. useForm - can create control form
+   1. method - register - create input name:
+      1. include additional options for input - as example required field ect.
+   2. method - handleSubmit - follow to register and back value all inputs
+   3. options - add some options:
+      1. control errors ect.
+2. useForm with:
+   1. form
+   2. input
+   3. select (dynamic creating)
+3. fetch to api jsonplaceholder from Postman:
+   1. post - create user
+   2. get - all users
+   3. get - single users
+
 # Lesson 3
 #### 1. Services
 1. Axios

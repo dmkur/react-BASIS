@@ -15,17 +15,26 @@ function App() {
 
     function submit(obj) {
         console.log(obj)
+
+        fetch("https://jsonplaceholder.typicode.com/users", {
+            method: 'POST',
+            body: JSON.stringify(obj),
+            headers: {"Content-Type":"application/json"}
+        })
+            .then(response => response.json())
+            .then(result => console.log(result))
+
     }
 
     let usersIds = [
-        {id:1, name:'loal'},
-        {id:2, name:'loal'},
-        {id:3, name:'loal'},
-        {id:4, name:'loal'},
-        {id:5, name:'lo1212'},
-        {id:6, name:'loa1``l'},
-        {id:7, name:'loal'},
-        {id:8, name:'loaasl'},
+        {id: 1, name: 'loal'},
+        {id: 2, name: 'loal'},
+        {id: 3, name: 'loal'},
+        {id: 4, name: 'loal'},
+        {id: 5, name: 'lo1212'},
+        {id: 6, name: 'loa1l'},
+        {id: 7, name: 'loal'},
+        {id: 8, name: 'loaasl'},
     ]
 
     return (
