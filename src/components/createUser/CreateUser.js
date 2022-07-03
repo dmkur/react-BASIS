@@ -1,5 +1,7 @@
 import {useForm} from "react-hook-form";
 
+import {createUser} from "../../services/users,api.services";
+
 export default function CreateUser() {
     const {register, handleSubmit, formState: {errors}} = useForm({
         defaultValues: {
@@ -9,12 +11,9 @@ export default function CreateUser() {
         }
     })
 
-    // if(errors.email){
-    //     return <span>field is required</span>
-    // }
-
-    function submit(obj) {
-        console.log(obj)
+    const submit = (obj) => {
+        console.log('lol')
+        createUser(obj).then(result => console.log(result))
     }
 
     return (
@@ -22,10 +21,11 @@ export default function CreateUser() {
 
             <h2> Create user </h2>
             <form onSubmit={handleSubmit(submit)}>
-                <input type={'text'} {...register('name')}/>
+                <input type={'text'} {...register('name', {required: true})}/>
+                {errors.name && <span>field is required</span>}
                 <input type={'text'} {...register('username')}/>
                 <input type={'text'} {...register('email')}/>
-                <button>Create</button>
+                <button type={'submit'}>Create</button>
             </form>
 
         </div>
