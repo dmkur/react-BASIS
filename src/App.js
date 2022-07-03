@@ -1,8 +1,10 @@
+import CreateUser from "./components/createUser/CreateUser";
+
 
 function App() {
   return (
     <div>
-      Hello World!
+      <CreateUser/>
     </div>
   );
 }
