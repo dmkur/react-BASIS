@@ -1,6 +1,6 @@
 import {useForm} from "react-hook-form";
 
-import {createUser} from "../../services/users,api.services";
+import {createUser} from "../../services/users.api.services";
 
 export default function CreateUser() {
     const {register, handleSubmit, formState: {errors}} = useForm({
@@ -12,7 +12,7 @@ export default function CreateUser() {
     })
 
     const submit = (obj) => {
-        console.log('lol')
+        console.log(obj)
         createUser(obj).then(result => console.log(result))
     }
 
