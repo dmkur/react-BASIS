@@ -1,6 +1,7 @@
 import {useEffect, useState} from "react";
-import ApiServices, {getUsers} from "../services/api.services";
+import ApiServices from "../services/api.services";
 import {User} from "../components/User";
+import {Outlet} from "react-router-dom";
 
 
 export function Users() {
@@ -14,6 +15,9 @@ export function Users() {
     return (
         <div>
             {users.map(value => <User user={value} key={value.id}/>)}
+            <div>
+                <Outlet/>
+            </div>
         </div>
     )
 }

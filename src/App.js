@@ -5,6 +5,9 @@ import {About} from "./pages/About";
 import {Users} from "./pages/Users";
 import {Posts} from "./pages/Posts";
 import {Comments} from "./pages/Comments";
+import {UserDetails} from "./components/UserDetails";
+import {Post} from "./components/Post";
+import {PostDetails} from "./components/PostDetails";
 
 function App() {
     return (
@@ -22,8 +25,12 @@ function App() {
                 <Routes>
                     <Route index element={<Home/>}/>
                     <Route path={'/layout'} element={<Layout/>}>
-                        <Route path={'users'} element={<Users/>}/>
-                        <Route path={'posts'} element={<Posts/>}/>
+                        <Route path={'users'} element={<Users/>}>
+                            <Route path={':id'} element={<UserDetails/>}/>
+                        </Route>
+                        <Route path={'posts'} element={<Posts/>}>
+                            <Route path={':id'} element={<PostDetails/>}/>}/>
+                        </Route>
                         <Route path={'comments'} element={<Comments/>}/>
                     </Route>
                     <Route path={'/about'} element={<About/>}/>
