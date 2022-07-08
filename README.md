@@ -1,3 +1,22 @@
+# Lesson 5
+#### 1. react-router-dom v.6
+1. Link, Routes, Route, Outlet, BrowserRouter
+   1. structure of routes tree
+   2. nestedRoute - route in father route
+   3. url parameters between route-sun and father-route
+2. Hooks
+   1. useParams - catch dynamic url parameters
+   2. useNavigate - create url
+   3. useLocation (state) - for state which can contain info about previous item
+3. Two methods how receive info
+   1. useLocation (state) - throw info with component to the child
+      1. work only after all url path
+      2. do`nt "ddos" server
+   2. another new fetch
+      1. url will be work without additional moves
+      2. create load for server - coz "ddos" server
+
+
 # Lesson 4
 #### 1. Hook
 1. useForm - can create control form
