@@ -1,8 +1,9 @@
+import A from "./components/A";
 
 function App() {
   return (
     <div>
-      Lesson-6
+      <A/>
     </div>
   );
 }
