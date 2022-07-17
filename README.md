@@ -1,3 +1,10 @@
+# Lesson 6
+#### Part 1 - Context
+1. CreateContext (provide, consumer)  - method can provide obj
+   to any component directly in project tre instead of
+   property drilling
+#### Part 2 - Class Components
+
 # Lesson 5
 #### 1. react-router-dom v.6
 1. Link, Routes, Route, Outlet, BrowserRouter
