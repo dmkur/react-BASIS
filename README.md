@@ -1,3 +1,17 @@
+# Lesson 6
+#### 1. Part - 1
+1. Context - create possibility received object for anu components in any moment
+#### 2. Part - 2
+1. Class Components
+   1. Life Cycle of components
+      1. ComponentDidMount - same like useEffect, will work after render of component
+#### 3. Part - 3
+1. Life Cycle of components
+   1. ComponentWillUnmount - same like return in useEffect, work before component die.
+   2. Cycle: constructor, render, componentDidMount, componentWillUnmount.
+      1. ComponentDidUpdate - update some prop in rendered component.
+      2. ComponentDidCatch - catch ERROR if during render component appeared wrong data ect.
+
 # Lesson 5
 #### 1. react-router-dom v.6
 1. Link, Routes, Route, Outlet, BrowserRouter
