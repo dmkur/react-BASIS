@@ -4,7 +4,7 @@ import User from "./User";
 
 class Users extends Component {
 
-    state = {users:[]}
+    state = {users:[], x:"cool"}
 
     constructor(props, context) {
         super(props, context);
@@ -18,8 +18,11 @@ class Users extends Component {
     render() {
         return (
             <div>
-                <h2>Users Component</h2>
                 {this.state.users.map(value=> <User item={value} key={value.id}/>)}
+                <button onClick={() => {
+                    this.state.users.pop()
+                    this.setState({users: this.state.users})
+                }}>Delete last user</button>
             </div>
         );
     }
