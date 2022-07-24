@@ -3,17 +3,27 @@ import {ApiUsersServices} from "../services/api.users.services";
 import User from "./User";
 
 class Users extends Component {
+    // UseState
     state = {users:[], x:'lol'}
 
     constructor(props, context) {
+        console.log('constructor')
         super(props, context);
+
+    }
+
+    // UseEffect
+    componentDidMount() {
+        console.log('componentDidMount')
         this.apiUserServices = new ApiUsersServices()
         // this.apiUserServices.getUsers().then(value => this.setState({...this.state, users:value}))
         this.apiUserServices.getUsers().then(value => this.setState({users:value}))
     }
 
     render() {
+        console.log('render')
         return (
+
             <div>
                 <h2>Users Component</h2>
                 {this.state.users.map(value=> <User item={value} key={value.id}/>)}
