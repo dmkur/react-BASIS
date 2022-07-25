@@ -19,3 +19,13 @@ const count1Slice = createSlice({
         }
     }
 });
+
+const {reducer: count1Reducer, actions: {inc, dec, reset}} = count1Slice;
+
+const count1Actions = {
+    inc,
+    dec,
+    reset
+}
+
+export {count1Reducer, count1Actions}
