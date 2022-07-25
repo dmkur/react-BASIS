@@ -1,4 +1,4 @@
-import {Count1Tool, ShowCounts} from "./components";
+import {Count1Tool, ShowCounts, Count2Tool} from "./components";
 
 function App() {
     return (
@@ -6,6 +6,7 @@ function App() {
             <ShowCounts/>
             <hr/>
             <Count1Tool/>
+            <Count2Tool/>
         </div>
     );
 }
