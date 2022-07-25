@@ -9,6 +9,7 @@ const dispatch = useDispatch();
             <button onClick={() => dispatch(count1Actions.inc())}>inc</button>
             <button onClick={() => dispatch(count1Actions.dec())}>dec</button>
             <button onClick={() => dispatch(count1Actions.reset())}>reset</button>
+            <button onClick={() => dispatch(count1Actions.getAllUsers())}>Users</button>
         </div>
     )
 }
