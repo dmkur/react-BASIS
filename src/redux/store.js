@@ -1,10 +1,6 @@
 import {combineReducers, configureStore} from "@reduxjs/toolkit";
-import {count1Reducer, count2Reducer} from "./slices";
 
-const rootReducer = combineReducers({
-    count1Reducer,
-    count2Reducer
-})
+const rootReducer = combineReducers({})
 
 const setupStore = () => configureStore({
     reducer: rootReducer
