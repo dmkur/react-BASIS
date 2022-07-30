@@ -3,6 +3,7 @@ import {carServices} from "../../services";
 
 const initialState = {
     cars: [],
+    carForUpdate: null,
     errors: null,
 };
 
@@ -21,7 +22,11 @@ const getAllCars = createAsyncThunk(
 const carSlice = createSlice({
     name: 'carSlice',
     initialState,
-    reducers: {},
+    reducers: {
+        setCarForUpdate:(state, action) => {
+            state.carForUpdate = action.payload
+        }
+    },
     extraReducers: (builder) => {
         builder
             .addCase(getAllCars.fulfilled, (state, action) => {
@@ -34,9 +39,9 @@ const carSlice = createSlice({
     }
 });
 
-const {reducer: carReducer, actions} = carSlice;
+const {reducer: carReducer, actions:{setCarForUpdate}} = carSlice;
 
-const carActions = {getAllCars}
+const carActions = {getAllCars, setCarForUpdate}
 
 export {
     carReducer,
