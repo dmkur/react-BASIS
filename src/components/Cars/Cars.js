@@ -16,7 +16,7 @@ const Cars = () => {
         <div>
             <h3>Cars</h3>
             {
-                cars.map((car, index)=><Car car={car} key={index}/>)
+                cars.map(car => <Car car={car} key={car.id}/>)
             }
         </div>
     )
