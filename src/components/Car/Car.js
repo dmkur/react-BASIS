@@ -13,6 +13,7 @@ const Car = ({car}) => {
             <div>year: {year}</div>
             <div>price: {price}</div>
             <button onClick={() => dispatch(carActions.setCarForUpdate(car)) } >Update Car</button>
+            <button onClick={() => dispatch(carActions.de)} >Delete Car</button>
         </div>
     )
 }

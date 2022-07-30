@@ -27,6 +27,21 @@ const updateById = createAsyncThunk(
     }
 );
 
+const createCar = createAsyncThunk(
+    'carSlice/createCar',
+    async (car, ) => {
+         const {data} = await carServices.createCar(car)
+    }
+)
+
+const deleteById = createAsyncThunk(
+    'carSlice/deleteById',
+    async (id) => {
+        await carServices.deleteById(id)
+        return id
+    }
+)
+
 const carSlice = createSlice({
     name: 'carSlice',
 
@@ -48,8 +63,11 @@ const carSlice = createSlice({
             })
             .addCase(updateById.fulfilled, (state, action) => {
                 const currentCar = state.cars.find(value => value.id = action.payload.id)
-                Object.assign(currentCar,action.payload)
+                Object.assign(currentCar, action.payload)
                 state.carForUpdate = null
+            })
+            .addCase(deleteById.fulfilled, (state, action) => {
+                state.cars.
             })
     }
 });
