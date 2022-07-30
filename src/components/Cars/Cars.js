@@ -6,7 +6,7 @@ import {carActions} from "../../redux";
 const Cars = () => {
     const {cars} = useSelector(state => state.cars);
     const dispatch = useDispatch();
-    console.log(cars, 'car-state')
+    //console.log(cars, 'car-state')
 
     useEffect(() => {
         dispatch(carActions.getAllCars())
@@ -16,7 +16,7 @@ const Cars = () => {
         <div>
             <h3>Cars</h3>
             {
-                cars.map(car=><Car car={car} key={car.id}/>)
+                cars.map((car, index)=><Car car={car} key={index}/>)
             }
         </div>
     )
