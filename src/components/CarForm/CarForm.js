@@ -5,8 +5,9 @@ import {carActions} from "../../redux";
 
 const CarForm = () => {
     const {register, handleSubmit, reset, setValue} = useForm();
-    const {carForUpdate} = useSelector((state) => state.cars);
+    const {carForUpdate, errors} = useSelector((state) => state.cars);
     const dispatch = useDispatch();
+    console.log(carForUpdate)
 
     useEffect(() => {
         if (carForUpdate) {
@@ -23,7 +24,6 @@ const CarForm = () => {
         } else {
             await dispatch(carActions.createCar({car: data}))
         }
-
         reset()
     };
 
@@ -35,6 +35,7 @@ const CarForm = () => {
                 <input type={'text'} placeholder={'price'} {...register('price')}/>
                 <input type={'text'} placeholder={'year'} {...register('year')}/>
                 <button>{carForUpdate? 'Update': 'Create'}</button>
+                {errors && <div>{JSON.stringify(errors)} </div>}
             </form>
         </div>
     )

@@ -17,31 +17,43 @@ const getAllCars = createAsyncThunk(
             return rejectWithValue(e.response.data)
         }
     }
-)
+);
 
 const updateById = createAsyncThunk(
     'carSlice/updateById',
-    async ({id, car}) => {
-        const {data} = await carServices.updateById(id, car)
-        return data
+    async ({id, car}, {rejectWithValue}) => {
+        try {
+            const {data} = await carServices.updateById(id, car)
+            return data
+        } catch (e) {
+            return rejectWithValue(e.response.data)
+        }
     }
 );
 
 const createCar = createAsyncThunk(
     'carSlice/createCar',
-    async ({car}) => {
-        const {data} = await carServices.createCar(car)
-        return data
+    async ({car}, {rejectWithValue}) => {
+        try {
+            const {data} = await carServices.createCar(car)
+            return data
+        } catch (e) {
+            return rejectWithValue(e.response.data)
+        }
     }
-)
+);
 
 const deleteById = createAsyncThunk(
     'carSlice/deleteById',
-    async ({id}) => {
-        await carServices.deleteById(id)
-        return id
+    async ({id}, {rejectWithValue}) => {
+        try {
+            await carServices.deleteById(id)
+            return id
+        } catch (e) {
+            return rejectWithValue(e.response.data)
+        }
     }
-)
+);
 
 const carSlice = createSlice({
     name: 'carSlice',
@@ -72,12 +84,13 @@ const carSlice = createSlice({
                 state.cars.push(action.payload)
             })
             .addDefaultCase((state, action) => {
-               const [type] = action.type.split('/').splice(-1);
-               if (type === 'rejected') {
-                   state.errors = action.payload
-               } else {
-                   state.errors = null
-               }
+                //console.log(action.type)
+                const [type] = action.type.split('/').splice(-1);
+                if (type === 'rejected') {
+                    state.errors = action.payload
+                } else {
+                    state.errors = null
+                }
             })
     }
 });
