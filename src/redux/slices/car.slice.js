@@ -59,7 +59,8 @@ const carSlice = createSlice({
                 state.cars = action.payload
             })
             .addCase(updateById.fulfilled, (state, action) => {
-                const currentCar = state.cars.find(value => value.id = action.payload.id)
+                const currentCar = state.cars.find(value => value.id === action.payload.id)
+                console.log(current(currentCar))
                 Object.assign(currentCar, action.payload)
                 state.carForUpdate = null
             })

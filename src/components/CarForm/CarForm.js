@@ -15,15 +15,17 @@ const CarForm = () => {
             setValue('year', carForUpdate.year)
             setValue('price', carForUpdate.price)
         }
-    }, [carForUpdate])
+    }, [carForUpdate, setValue])
 
     const submit = async (data) => {
         if (carForUpdate) {
             await dispatch(carActions.updateById({id: carForUpdate.id, car: data}))
 
-        } else {}
-         await dispatch(carActions.createCar({car: data}))
-        reset();
+        } else {
+            await dispatch(carActions.createCar({car: data}))
+        }
+
+        reset()
     };
 
     return (
