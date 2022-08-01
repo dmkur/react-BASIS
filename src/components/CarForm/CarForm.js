@@ -6,9 +6,9 @@ const CarForm = () => {
     const {register, handleSubmit, reset, setValue} = useForm();
     const dispatch = useDispatch();
 
-    const submit = (data) => {
-        console.log(data)
-        dispatch(carSliceActions.createCar(data))
+    const submit = (car) => {
+        //console.log(data)
+        dispatch(carSliceActions.createCar({car:car}))
         reset()
     };
 
