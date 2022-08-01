@@ -1,17 +1,22 @@
 import {useEffect} from "react";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import {carSliceActions} from "../../redux";
+import {Car} from "../Car/Car";
+
 
 const Cars = () => {
     const {cars} = useSelector(state => state.carReducer)
     console.log(cars, 'cars from carReducer')
+    const dispatch = useDispatch();
 
-    useEffect( () => {
-
+    useEffect(() => {
+        dispatch(carSliceActions.getAllCars())
     }, [])
 
     return (
         <div>
-            Cars component
+            <h3>Cars</h3>
+            {cars.map(car => <Car car={car} key={car.id}/>)}
         </div>
     )
 };
