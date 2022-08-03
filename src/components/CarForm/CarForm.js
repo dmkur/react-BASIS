@@ -19,7 +19,7 @@ const CarForm = () => {
 
     const submit = (car) => {
             if(carForUpdate){
-                dispatch(carSliceActions.updateCarById({data:car, id: carForUpdate.id}))
+                dispatch(carSliceActions.updateCarById({id:carForUpdate.id, car}))
             } else {
             dispatch(carSliceActions.createCar({car: car}))
             //console.log(data)
