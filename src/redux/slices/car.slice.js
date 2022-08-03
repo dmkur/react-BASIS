@@ -3,7 +3,7 @@ import {carServices} from "../../services";
 
 const initialState = {
     cars: [],
-    carForUpdate:null,
+    carForUpdate: null,
     error: null
 };
 
@@ -58,7 +58,7 @@ const carSlice = createSlice({
     name: 'carSlice',
     initialState,
     reducers: {
-        setCarForUpdate:(state, action) => {
+        setCarForUpdate: (state, action) => {
             state.carForUpdate = action.payload
         }
     },
@@ -68,10 +68,12 @@ const carSlice = createSlice({
                 state.carForUpdate = null
                 state.cars = action.payload
             })
-            // .addCase(updateCarById.fulfilled, (state, action) => {
-            //
-            // })
-            .addCase(createCar.fulfilled,(state, action) => {
+            .addCase(updateCarById.fulfilled, (state, action) => {
+                const find = state.cars.find(car => car.id === action.payload);
+                Object.assign(find, action.payload)
+                state.carForUpdate = null
+            })
+            .addCase(createCar.fulfilled, (state, action) => {
                 state.cars.push(action.payload)
             })
             .addCase(deleteCarByID.fulfilled, (state, action) => {
@@ -81,7 +83,7 @@ const carSlice = createSlice({
             .addDefaultCase((state, action) => {
                 const [type] = action.type.split('/').slice(-1)
                 // console.log(action.type.split('/').slice(-1))
-                if(type === 'rejected'){
+                if (type === 'rejected') {
                     state.error = action.payload
                 } else {
                     state.error = null
@@ -90,9 +92,15 @@ const carSlice = createSlice({
     }
 });
 
-const {reducer: carReducer, actions:{setCarForUpdate}} = carSlice;
+const {reducer: carReducer, actions: {setCarForUpdate}} = carSlice;
 
-const carSliceActions = {getAllCars, createCar, deleteCarByID, setCarForUpdate}
+const carSliceActions = {
+    getAllCars,
+    createCar,
+    deleteCarByID,
+    setCarForUpdate,
+    updateCarById
+}
 
 export {carSliceActions, carReducer}
 

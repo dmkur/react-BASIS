@@ -15,13 +15,15 @@ const CarForm = () => {
             setValue('year', carForUpdate.year)
             setValue('price', carForUpdate.price)
         }
-    }, [carForUpdate])
+    }, [carForUpdate, setValue])
 
     const submit = (car) => {
-
-            //console.log(data)
+            if(carForUpdate){
+                dispatch(carSliceActions.updateCarById({data:car, id: carForUpdate.id}))
+            } else {
             dispatch(carSliceActions.createCar({car: car}))
-
+            //console.log(data)
+            }
         reset()
     };
 
