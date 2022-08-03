@@ -5,7 +5,7 @@ import {Car} from "../Car/Car";
 
 
 const Cars = () => {
-    const {cars} = useSelector(state => state.carReducer)
+    const {cars, carForUpdate} = useSelector(state => state.carReducer)
     console.log(cars, 'cars from carReducer')
     const dispatch = useDispatch();
 

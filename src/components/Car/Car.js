@@ -14,6 +14,7 @@ const Car = ({car}) => {
             <div>Year: {year}</div>
             <button onClick={() => dispatch(carSliceActions.deleteCarByID({id}))}
                 >Delete</button>
+            <button onClick={() => dispatch(carSliceActions.setCarForUpdate(car))}>Update</button>
         </div>
     )
 };

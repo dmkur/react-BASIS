@@ -3,6 +3,7 @@ import {carServices} from "../../services";
 
 const initialState = {
     cars: [],
+    carForUpdate:null,
     error: null
 };
 
@@ -41,15 +42,35 @@ const deleteCarByID = createAsyncThunk(
     }
 );
 
+const updateCarById = createAsyncThunk(
+    'carSlice/updateCarById',
+    async ({id, car}, {rejectWithValue}) => {
+        try {
+            const {data} = await carServices.updateCarById(id, car)
+            return data
+        } catch (e) {
+            return rejectWithValue(e.response.data)
+        }
+    }
+);
+
 const carSlice = createSlice({
     name: 'carSlice',
     initialState,
-    reducers: {},
+    reducers: {
+        setCarForUpdate:(state, action) => {
+            state.carForUpdate = action.payload
+        }
+    },
     extraReducers: (builder) => {
         builder
             .addCase(getAllCars.fulfilled, (state, action) => {
+                state.carForUpdate = null
                 state.cars = action.payload
             })
+            // .addCase(updateCarById.fulfilled, (state, action) => {
+            //
+            // })
             .addCase(createCar.fulfilled,(state, action) => {
                 state.cars.push(action.payload)
             })
@@ -69,9 +90,9 @@ const carSlice = createSlice({
     }
 });
 
-const {reducer: carReducer, actions} = carSlice;
+const {reducer: carReducer, actions:{setCarForUpdate}} = carSlice;
 
-const carSliceActions = {getAllCars, createCar, deleteCarByID}
+const carSliceActions = {getAllCars, createCar, deleteCarByID, setCarForUpdate}
 
 export {carSliceActions, carReducer}
 
