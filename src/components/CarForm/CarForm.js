@@ -7,7 +7,6 @@ const CarForm = () => {
     const {register, handleSubmit, reset, setValue} = useForm();
     const {error, carForUpdate} = useSelector(state => state.carReducer)
     const dispatch = useDispatch();
-    console.log(carForUpdate, 'up')
 
     useEffect(() => {
         if (carForUpdate) {

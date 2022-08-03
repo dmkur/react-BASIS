@@ -1,4 +1,4 @@
-import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
+import {createAsyncThunk, createSlice, current} from "@reduxjs/toolkit";
 import {carServices} from "../../services";
 
 const initialState = {
@@ -29,7 +29,6 @@ const createCar = createAsyncThunk(
         }
     }
 );
-
 const deleteCarByID = createAsyncThunk(
     'carSlice/deleteCarById',
     async ({id}, {rejectWithValue}) => {
@@ -41,12 +40,12 @@ const deleteCarByID = createAsyncThunk(
         }
     }
 );
-
 const updateCarById = createAsyncThunk(
     'carSlice/updateCarById',
     async ({id, car}, {rejectWithValue}) => {
         try {
             const {data} = await carServices.updateCarById(id, car)
+            console.log(data, 'carSlice/updateCarById', 'async')
             return data
         } catch (e) {
             return rejectWithValue(e.response.data)
@@ -59,6 +58,7 @@ const carSlice = createSlice({
     initialState,
     reducers: {
         setCarForUpdate: (state, action) => {
+            console.log(state.carForUpdate = action.payload, 'setCarForUpdate')
             state.carForUpdate = action.payload
         }
     },
@@ -69,8 +69,11 @@ const carSlice = createSlice({
                 state.cars = action.payload
             })
             .addCase(updateCarById.fulfilled, (state, action) => {
+                console.log(action.payload, 'addcase')
                 const find = state.cars.find(car => car.id === action.payload.id);
-                Object.assign(find, action.payload)
+                console.log(current(find), "find")
+               const lol=  Object.assign(find, action.payload)
+                console.log(current(lol), 'Obj.assign')
                 state.carForUpdate = null
             })
             .addCase(createCar.fulfilled, (state, action) => {
