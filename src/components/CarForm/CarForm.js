@@ -21,7 +21,7 @@ const CarForm = () => {
             if(carForUpdate){
                 dispatch(carSliceActions.updateCarById({data:car, id: carForUpdate.id}))
             } else {
-            dispatch(carSliceActions.createCar({car: car}))
+                dispatch(carSliceActions.createCar({car: car}))
             //console.log(data)
             }
         reset()

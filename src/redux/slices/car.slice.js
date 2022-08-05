@@ -77,7 +77,7 @@ const carSlice = createSlice({
                 state.cars.push(action.payload)
             })
             .addCase(deleteCarByID.fulfilled, (state, action) => {
-                const currentCar = state.cars.findIndex(car => car.id === action.payload.id)
+                const currentCar = state.cars.findIndex(car => car.id === action.payload)
                 state.cars.splice(currentCar, 1)
             })
             .addDefaultCase((state, action) => {
