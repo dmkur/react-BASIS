@@ -1,0 +1,23 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+.Header {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    background-color: cornflowerblue;
+    color: seashell;
+    font-size: 25px;
+    padding: 10px;
+
+}
+
+.btn button {
+    width: 80px;
+    margin: 0 10px;
+    padding: 2px 5px;
+    border-radius: 3px;
+    background-color: seashell;
+    border: 1px solid gray;
+}
