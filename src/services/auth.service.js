@@ -22,6 +22,3 @@ const authService = {
 }
 
 export {authService}
-
-
-
