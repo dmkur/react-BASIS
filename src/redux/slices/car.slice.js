@@ -4,7 +4,9 @@ import {carServices} from "../../services";
 const initialState = {
     cars: [],
     carForUpdate: null,
-    error: null
+    error: null,
+    prev:null,
+    next:null
 };
 
 const getAllCars = createAsyncThunk(
@@ -66,7 +68,9 @@ const carSlice = createSlice({
         builder
             .addCase(getAllCars.fulfilled, (state, action) => {
                 state.carForUpdate = null
-                state.cars = action.payload
+                state.cars = action.payload.data
+                state.next = action.payload.next
+                state.prev = action.payload.prev
             })
             .addCase(updateCarById.fulfilled, (state, action) => {
                 const find = state.cars.find(car => car.id === action.payload);

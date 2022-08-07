@@ -1,14 +1,20 @@
 import {useForm} from "react-hook-form";
 import {useDispatch} from "react-redux";
 import {authActions} from "../../redux";
-import {authService} from "../../services";
+import {useNavigate} from "react-router-dom";
+
 
 const LoginForm = () => {
     const {register, handleSubmit} = useForm();
-const dispatch = useDispatch();
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
 
-    const submit = (data) => {
-        dispatch(authActions.login({user:data}))
+    const submit = async (data) => {
+        const {error} = await dispatch(authActions.login({user: data}))
+
+        if (!error) {
+            navigate('/cars')
+        }
     };
 
     return (
