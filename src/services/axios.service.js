@@ -8,6 +8,8 @@ const axiosService = axios.create({
 
 // сервіс що врізається у запит до серверу
 // та робить додаткові маніпуляції
+
+// запит при request
 axiosService.interceptors.request.use((config) => {
     const access = authService.getAccessToken()
 
