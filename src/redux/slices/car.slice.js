@@ -11,9 +11,9 @@ const initialState = {
 
 const getAllCars = createAsyncThunk(
     'carSlice/getAllCars',
-    async (_, {rejectWithValue}) => {
+    async ({page}, {rejectWithValue}) => {
         try {
-            const {data} = await carServices.getAllCars()
+            const {data} = await carServices.getAllCars(page)
             return data
         } catch (e) {
             return rejectWithValue(e.response.data)
